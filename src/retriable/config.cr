@@ -10,6 +10,18 @@ module Retriable
       :contexts
     ]
 
+    property tries : Int32
+    property base_interval : Float64
+    property max_interval : Float64
+    property rand_factor : Float64
+    property multiplier : Float64
+    property sleep_disabled : Boolean
+    property max_elapsed_time : Float64
+    property intervals : Array(Float64)
+    property timeout : Float64
+    property on_retry : Int32 ->
+
+
     def initialize(opts = {})
       backoff = ExponentialBackoff.new
 
@@ -24,7 +36,7 @@ module Retriable
       @timeout = nil
       #@on = [StandardError]
       @on_retry = nil
-      @contexts = {}
+      #@contexts = {}
 
       yield self
     end
